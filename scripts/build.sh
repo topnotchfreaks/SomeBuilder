@@ -12,10 +12,6 @@ SAFE_TIME=5760  # 1 hour and 35 minutes in seconds
 LOG_FILE="build.log"
 OTA_ZIP="${OUT_DIR}/target/product/${DEVICE_CODENAME}/*.zip"
 
-# ===== 64-bit Enforcement =====
- export TARGET_ARCH=arm64
- export TARGET_SUPPORTS_32_BIT_APPS=false
-
 # ===== Functions =====
 
 # Cleanup handler
@@ -85,7 +81,7 @@ compress_and_upload_ccache() {
 
 upload_ota() {
     echo "Uploading OTA ZIP..."
-    ota_file=$(find "out/target/product/${DEVICE_CODENAME}" -name "Arrow-v13.1-topaz*.zip" -type f | head -n 1)
+    ota_file=$(find "out/target/product/${DEVICE_CODENAME}" -name "lineage*.zip" -type f | head -n 1)
     
     if [ -z "$ota_file" ]; then
         echo "No OTA ZIP file found!"
